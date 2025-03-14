@@ -1,9 +1,9 @@
 # Kurdish Calendar
 
-![Kurdish Calendar](https://raw.githubusercontent.com/username/kurdish-calendar/main/assets/banner.png)
+![Kurdish Calendar](https://raw.githubusercontent.com/devfarzad/kurdish-calendar/main/assets/banner.png)
 
 [![npm version](https://img.shields.io/npm/v/kurdish-calendar.svg)](https://www.npmjs.com/package/kurdish-calendar)
-[![License](https://img.shields.io/npm/l/kurdish-calendar.svg)](https://github.com/username/kurdish-calendar/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/kurdish-calendar.svg)](https://github.com/devfarzad/kurdish-calendar/blob/main/LICENSE)
 
 A comprehensive Kurdish calendar library that supports both Rojhalat (Eastern) and Bashur (Southern) Kurdish calendar variants, multilingual holiday data, and various date utility functions.
 
@@ -18,9 +18,10 @@ A comprehensive Kurdish calendar library that supports both Rojhalat (Eastern) a
   - Support for different date formats and locales
   
 - **Rich Holiday Data**
-  - Comprehensive database of Kurdish holidays and events
+  - Comprehensive database of Kurdish holidays and events for 2024-2025
   - Multi-language support (Kurdish, English, Arabic, Persian)
   - Filter holidays by date, country, or region
+  - Includes quotes from Kurdish leaders and poets for each holiday
   
 - **Date Utilities**
   - Format dates in different calendars and locales
@@ -122,6 +123,11 @@ console.log(`Found ${kurdistanHolidays.length} holidays in Kurdistan in March 20
 const nextHoliday = getNextHoliday(new Date());
 if (nextHoliday) {
   console.log(`Next holiday: ${nextHoliday.event.en} on ${nextHoliday.date}`);
+  
+  // Access the quote if available
+  if (nextHoliday.quote) {
+    console.log(`Quote from ${nextHoliday.quote.celebrity}: ${nextHoliday.quote.quote.en}`);
+  }
 }
 
 // Check if a specific date is a holiday
@@ -161,12 +167,79 @@ console.log(newDate.toISOString()); // 2024-03-26...
 console.log(isLeapYear(2024)); // true
 ```
 
+## Project Structure
+
+The Kurdish Calendar package is organized as follows:
+
+```
+kurdish-calendar/
+├── src/                 # Source code
+│   ├── core/            # Core functionality
+│   │   ├── date-utils.ts        # Date utility functions
+│   │   ├── holidays.ts          # Holiday data and functions
+│   │   ├── jalaali.ts           # Persian calendar conversion
+│   │   └── kurdish-calendar.ts  # Main Kurdish calendar logic
+│   ├── types/           # TypeScript type definitions
+│   │   └── index.ts             # Interfaces and types
+│   └── index.ts         # Public API exports
+├── dist/                # Compiled output
+├── test/                # Test files
+└── docs/                # Documentation
+```
+
+## Data Types
+
+The package uses the following key data types:
+
+### `KurdishDateResult`
+
+Result of Kurdish date conversion:
+
+```typescript
+interface KurdishDateResult {
+  gregorianDate: string;      // Formatted Gregorian date
+  kurdishDate: string;        // Formatted Kurdish date in Arabic script
+  kurdishDateLatin: string;   // Formatted Kurdish date in Latin script
+  kurdishYear: number;        // Kurdish year
+  kurdishMonth: string;       // Kurdish month in Arabic script
+  kurdishMonthLatin: string;  // Kurdish month in Latin script
+  kurdishDay: number;         // Kurdish day of month
+}
+```
+
+### `Holiday`
+
+A holiday or significant event:
+
+```typescript
+interface Holiday {
+  date: string;               // Date in ISO format (YYYY-MM-DD)
+  event: MultiLanguageText;   // Event name in multiple languages
+  note?: MultiLanguageText;   // Optional notes about the event
+  country?: string;           // Country associated with the event
+  region?: string;            // Region within a country
+  quote?: Quote;              // Optional quote related to the event
+}
+
+interface MultiLanguageText {
+  en: string;                 // English text
+  ku: string;                 // Kurdish text
+  ar: string;                 // Arabic text
+  fa: string;                 // Persian/Farsi text
+}
+
+interface Quote {
+  celebrity: string;          // The name of the person quoted
+  quote: MultiLanguageText;   // The quote in multiple languages
+}
+```
+
 ## API Reference
 
 ### Core Calendar Functions
 
 #### `getKurdishDate(date?: Date): KurdishDateResult`
-Converts a Gregorian date to Kurdish date (Rojhalat/Eastern variant).
+Converts a Gregorian date to Kurdish date (Rojhalat/Eastern variant by default).
 
 #### `getKurdishDateByVariant(date?: Date, variant?: KurdishCalendarVariant): KurdishDateResult`
 Converts a Gregorian date to Kurdish date based on the specified variant.
@@ -192,13 +265,16 @@ Gets holidays for a specific month.
 Gets holidays between two dates.
 
 #### `getUpcomingHolidays(date: Date, count?: number, options?: HolidayOptions): Holiday[]`
-Gets upcoming holidays from a given date.
+Gets upcoming holidays from a given date. Default count is 5.
 
 #### `getNextHoliday(date: Date, options?: HolidayOptions): Holiday | null`
 Gets the next holiday from a given date.
 
 #### `isHoliday(date: Date, options?: HolidayOptions): boolean`
 Checks if a specific date is a holiday.
+
+#### `getLocalizedText(textObj: { [key: string]: string }, language?: string, defaultText?: string): string`
+Gets translated text based on the specified language.
 
 ### Date Utilities
 
@@ -220,6 +296,23 @@ Checks if two dates are the same day.
 #### `isToday(date: Date): boolean`
 Checks if a date is today.
 
+### KurdishCalendar Object API
+
+#### `KurdishCalendar.today(): KurdishDateResult`
+Returns today's date in Kurdish format (Rojhalat variant).
+
+#### `KurdishCalendar.todayBashur(): KurdishDateResult`
+Returns today's date in Kurdish format (Bashur variant).
+
+#### `KurdishCalendar.convertDate(date: Date, variant?: KurdishCalendarVariant): KurdishDateResult`
+Converts a date to Kurdish format using the specified variant.
+
+#### `KurdishCalendar.getTodaysHolidays(options?: HolidayOptions): Holiday[]`
+Returns holidays for today.
+
+#### `KurdishCalendar.getUpcomingHolidays(count?: number, options?: HolidayOptions): Holiday[]`
+Returns upcoming holidays from today. Default count is 5.
+
 ## Calendar Background
 
 The Kurdish calendar has two main variants:
@@ -235,6 +328,20 @@ The Kurdish calendar has two main variants:
    - Uses standard Gregorian year
    - Month names are in Kurdish (e.g., ئازار - Azar for March)
 
+### Holiday Information
+
+The package includes comprehensive holiday data for 2024-2025, including:
+- Cultural holidays (e.g., Kurdish Clothing Day, Kurdish Film Day)
+- Religious holidays (e.g., Eid al-Fitr, Eid al-Adha)
+- Historical commemorations (e.g., Halabja Memorial Day)
+- National holidays (e.g., Kurdish Uprising Day, Kurdish Flag Day)
+
+Each holiday includes:
+- Multilingual descriptions (Kurdish, English, Arabic, Persian)
+- Date information (with notes for variable dates)
+- Quotes from Kurdish leaders and cultural figures
+- Optional regional information
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -247,10 +354,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-- Special thanks to the Kurdish community
-- Based on algorithms from various open-source calendar conversion libraries
-- Holiday data compiled from multiple authoritative sources 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 

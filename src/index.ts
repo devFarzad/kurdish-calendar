@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Kurdish Calendar Package
  * 
@@ -118,4 +119,5 @@ export const KurdishCalendar = {
 };
 
 // Default export
-export default KurdishCalendar; 
+export default KurdishCalendar;
+

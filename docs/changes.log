@@ -18,4 +18,8 @@
 [2024-03-14 12:05:00] [DOCS] [README.md] Verified documentation for npm package users
 [2024-03-14 12:15:00] [CONFIG] [.eslintrc.json] Added ESLint configuration file for publishing
 [2024-03-14 12:20:00] [CONFIG] [package.json] Temporarily disabled lint check in prepublishOnly script
-[2024-03-14 12:25:00] [CONFIG] [package.json] Fixed the repository URL format 
+[2024-03-14 12:25:00] [CONFIG] [package.json] Fixed the repository URL format
+[2024-03-14 11:05:00] [DOCS] [docs/usage.md] Created comprehensive usage documentation
+[2024-03-14 11:10:00] [DOCS] [docs/holiday-data.md] Created holiday data structure documentation
+[2024-03-14 11:15:00] [DOCS] [docs/api-reference.md] Created detailed API reference documentation
+[2024-03-14 11:20:00] [DOCS] [docs/CONTRIBUTING.md] Created contributor's guide 
