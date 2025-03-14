@@ -60,6 +60,9 @@ export {
   getLocalizedText
 } from './core/holidays';
 
+// Import types
+import { HolidayOptions } from './types';
+
 // Convenience export for common use cases
 import { getKurdishDate, getKurdishDateByVariant } from './core/kurdish-calendar';
 import { KurdishCalendarVariant } from './types';
@@ -103,7 +106,7 @@ export const KurdishCalendar = {
    * 
    * @param options - Optional filtering options
    */
-  getTodaysHolidays: (options?: any) => {
+  getTodaysHolidays: (options?: HolidayOptions) => {
     return getHolidaysForDate(new Date(), options);
   },
   
@@ -113,7 +116,7 @@ export const KurdishCalendar = {
    * @param count - Number of upcoming holidays to return
    * @param options - Optional filtering options
    */
-  getUpcomingHolidays: (count: number = 5, options?: any) => {
+  getUpcomingHolidays: (count: number = 5, options?: HolidayOptions) => {
     return getUpcomingHolidays(new Date(), count, options);
   }
 };

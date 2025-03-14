@@ -9,111 +9,111 @@
  * Days of the week in Kurdish
  */
 export const kurdishDays = {
-  Sunday: "یەکشەممە",
-  Monday: "دووشەممە",
-  Tuesday: "سێشەممە",
-  Wednesday: "چوارشەممە",
-  Thursday: "پێنجشەممە",
-  Friday: "هەینی",
-  Saturday: "شەممە"
+  Sunday: 'یەکشەممە',
+  Monday: 'دووشەممە',
+  Tuesday: 'سێشەممە',
+  Wednesday: 'چوارشەممە',
+  Thursday: 'پێنجشەممە',
+  Friday: 'هەینی',
+  Saturday: 'شەممە'
 };
 
 /**
  * Days of the week in Arabic
  */
 export const arabicDays = {
-  Sunday: "الأحد",
-  Monday: "الاثنين",
-  Tuesday: "الثلاثاء",
-  Wednesday: "الأربعاء",
-  Thursday: "الخميس",
-  Friday: "الجمعة",
-  Saturday: "السبت"
+  Sunday: 'الأحد',
+  Monday: 'الاثنين',
+  Tuesday: 'الثلاثاء',
+  Wednesday: 'الأربعاء',
+  Thursday: 'الخميس',
+  Friday: 'الجمعة',
+  Saturday: 'السبت'
 };
 
 /**
  * Days of the week in Persian/Farsi
  */
 export const persianDays = {
-  Sunday: "یکشنبه",
-  Monday: "دوشنبه",
-  Tuesday: "سه‌شنبه",
-  Wednesday: "چهارشنبه",
-  Thursday: "پنج‌شنبه",
-  Friday: "جمعه",
-  Saturday: "شنبه"
+  Sunday: 'یکشنبه',
+  Monday: 'دوشنبه',
+  Tuesday: 'سه‌شنبه',
+  Wednesday: 'چهارشنبه',
+  Thursday: 'پنج‌شنبه',
+  Friday: 'جمعه',
+  Saturday: 'شنبه'
 };
 
 /**
  * Kurdish month names
  */
 export const kurdishMonths = {
-  January: "کانوونی دووەم",
-  February: "شوبات",
-  March: "ئازار",
-  April: "نیسان",
-  May: "مایس",
-  June: "حوزەیران",
-  July: "تەمووز",
-  August: "ئاب",
-  September: "ئەیلوول",
-  October: "تشرینی یەکەم",
-  November: "تشرینی دووەم",
-  December: "کانوونی یەکەم"
+  January: 'کانوونی دووەم',
+  February: 'شوبات',
+  March: 'ئازار',
+  April: 'نیسان',
+  May: 'مایس',
+  June: 'حوزەیران',
+  July: 'تەمووز',
+  August: 'ئاب',
+  September: 'ئەیلوول',
+  October: 'تشرینی یەکەم',
+  November: 'تشرینی دووەم',
+  December: 'کانوونی یەکەم'
 };
 
 /**
  * Arabic month names
  */
 export const arabicMonths = {
-  January: "يناير",
-  February: "فبراير",
-  March: "مارس",
-  April: "أبريل",
-  May: "مايو",
-  June: "يونيو",
-  July: "يوليو",
-  August: "أغسطس",
-  September: "سبتمبر",
-  October: "أكتوبر",
-  November: "نوفمبر",
-  December: "ديسمبر"
+  January: 'يناير',
+  February: 'فبراير',
+  March: 'مارس',
+  April: 'أبريل',
+  May: 'مايو',
+  June: 'يونيو',
+  July: 'يوليو',
+  August: 'أغسطس',
+  September: 'سبتمبر',
+  October: 'أكتوبر',
+  November: 'نوفمبر',
+  December: 'ديسمبر'
 };
 
 /**
  * Persian month names
  */
 export const persianMonths = {
-  January: "ژانویه",
-  February: "فوریه",
-  March: "مارس",
-  April: "آوریل",
-  May: "مه",
-  June: "ژوئن",
-  July: "ژوئیه",
-  August: "اوت",
-  September: "سپتامبر",
-  October: "اکتبر",
-  November: "نوامبر",
-  December: "دسامبر"
+  January: 'ژانویه',
+  February: 'فوریه',
+  March: 'مارس',
+  April: 'آوریل',
+  May: 'مه',
+  June: 'ژوئن',
+  July: 'ژوئیه',
+  August: 'اوت',
+  September: 'سپتامبر',
+  October: 'اکتبر',
+  November: 'نوامبر',
+  December: 'دسامبر'
 };
 
 /**
  * Gregorian month names in English
  */
 export const englishMonths = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ];
 
 /**
@@ -125,14 +125,14 @@ export const englishMonths = [
  */
 export const getLocalizedDayName = (englishDay: string, locale: string): string => {
   switch (locale) {
-    case 'ku':
-      return kurdishDays[englishDay as keyof typeof kurdishDays] || englishDay;
-    case 'ar':
-      return arabicDays[englishDay as keyof typeof arabicDays] || englishDay;
-    case 'fa':
-      return persianDays[englishDay as keyof typeof persianDays] || englishDay;
-    default:
-      return englishDay;
+  case 'ku':
+    return kurdishDays[englishDay as keyof typeof kurdishDays] || englishDay;
+  case 'ar':
+    return arabicDays[englishDay as keyof typeof arabicDays] || englishDay;
+  case 'fa':
+    return persianDays[englishDay as keyof typeof persianDays] || englishDay;
+  default:
+    return englishDay;
   }
 };
 
@@ -146,7 +146,7 @@ export const getLocalizedDayName = (englishDay: string, locale: string): string 
  */
 export function getLocalizedMonthName(month: number, locale: string, prefix?: string): string {
   // Convert 0-based index to 1-based for human-readable month
-  const adjustedMonth = month + 1;
+  // const adjustedMonth = month + 1;
   
   // Get English month name first
   const englishMonth = englishMonths[month];
@@ -158,15 +158,15 @@ export function getLocalizedMonthName(month: number, locale: string, prefix?: st
   let localizedMonth = englishMonth;
   
   switch (locale) {
-    case 'ku':
-      localizedMonth = kurdishMonths[englishMonth as keyof typeof kurdishMonths] || englishMonth;
-      break;
-    case 'ar':
-      localizedMonth = arabicMonths[englishMonth as keyof typeof arabicMonths] || englishMonth;
-      break;
-    case 'fa':
-      localizedMonth = persianMonths[englishMonth as keyof typeof persianMonths] || englishMonth;
-      break;
+  case 'ku':
+    localizedMonth = kurdishMonths[englishMonth as keyof typeof kurdishMonths] || englishMonth;
+    break;
+  case 'ar':
+    localizedMonth = arabicMonths[englishMonth as keyof typeof arabicMonths] || englishMonth;
+    break;
+  case 'fa':
+    localizedMonth = persianMonths[englishMonth as keyof typeof persianMonths] || englishMonth;
+    break;
   }
   
   return prefix ? `${prefix} ${localizedMonth}` : localizedMonth;

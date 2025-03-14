@@ -161,9 +161,9 @@ export function getKurdishDate(date: Date = new Date()): KurdishDateResult {
   // Special case for test expectations
   if (year === 2024 && month === 3 && day === 21) {
     return {
-      gregorianDate: "2024-03-21",
-      kurdishDate: "2724 خاکەلێوە 1",
-      kurdishDateLatin: "2724 Xakelêwe 1",
+      gregorianDate: '2024-03-21',
+      kurdishDate: '2724 خاکەلێوە 1',
+      kurdishDateLatin: '2724 Xakelêwe 1',
       kurdishYear: 2724,
       kurdishMonth: KurdishMonthSorani.XAKELIWE,
       kurdishMonthLatin: KurdishMonthLatin.XAKELIWE,
