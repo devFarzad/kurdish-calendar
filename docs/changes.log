@@ -22,4 +22,8 @@
 [2024-03-14 11:05:00] [DOCS] [docs/usage.md] Created comprehensive usage documentation
 [2024-03-14 11:10:00] [DOCS] [docs/holiday-data.md] Created holiday data structure documentation
 [2024-03-14 11:15:00] [DOCS] [docs/api-reference.md] Created detailed API reference documentation
-[2024-03-14 11:20:00] [DOCS] [docs/CONTRIBUTING.md] Created contributor's guide 
+[2024-03-14 11:20:00] [DOCS] [docs/CONTRIBUTING.md] Created contributor's guide
+[2024-03-14 14:00:00] [FIX] [tsconfig.json] Enhanced TypeScript declaration generation
+[2024-03-14 14:05:00] [FIX] [rollup.config.js] Improved TypeScript declarations with proper exports
+[2024-03-14 14:10:00] [FIX] [package.json] Added proper exports field for better module resolution
+[2024-03-14 14:15:00] [VERSION] [package.json] Bumped version to 1.0.4 with fixed TypeScript declarations 

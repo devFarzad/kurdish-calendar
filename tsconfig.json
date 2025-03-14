@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "ESNext",
+    "module": "esnext",
     "declaration": true,
-    "declarationDir": "dist",
+    "declarationDir": "dist/types",
+    "declarationMap": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
@@ -14,5 +15,5 @@
     "lib": ["es2020", "dom"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "test"]
+  "exclude": ["node_modules", "dist", "tests"]
 } 

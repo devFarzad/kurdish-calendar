@@ -17,7 +17,8 @@ export default [
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
-        exports: 'named'
+        exports: 'named',
+        name: 'kurdishCalendar'
       },
       {
         file: pkg.module,
@@ -30,7 +31,12 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ 
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: './dist/types',
+        rootDir: './src'
+      }),
       json(),
       terser(),
     ],
