@@ -1,6 +1,6 @@
 {
   "name": "kurdish-calendar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A comprehensive Kurdish calendar library supporting both Rojhalat (Eastern) and Bashur (Southern) variants",
   "type": "module",
   "main": "dist/index.js",
@@ -80,4 +80,4 @@
   "publishConfig": {
     "access": "public"
   }
-} 
+}

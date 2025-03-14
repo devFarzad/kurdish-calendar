@@ -67,7 +67,7 @@ export enum KurdishCalendarVariant {
   /** Eastern Kurdish calendar (Rojhalat) - Based on Solar Hijri */
   ROJHALAT = 'rojhalat',
   /** Southern Kurdish calendar (Bashur) - Based on Gregorian */
-  BASHUR = 'bashur'
+  BASHUR = 'bashur',
 }
 
 /**
@@ -96,4 +96,4 @@ export interface HolidayOptions {
   region?: string;
   /** Language to return the holiday information in */
   language?: 'en' | 'ku' | 'ar' | 'fa';
-} 
+}

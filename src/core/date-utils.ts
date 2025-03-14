@@ -1,6 +1,6 @@
 /**
  * Date Utilities Module
- * 
+ *
  * This module provides helper functions for formatting and manipulating dates
  * across different calendar systems and locales.
  */
@@ -15,7 +15,7 @@ export const kurdishDays = {
   Wednesday: 'چوارشەممە',
   Thursday: 'پێنجشەممە',
   Friday: 'هەینی',
-  Saturday: 'شەممە'
+  Saturday: 'شەممە',
 };
 
 /**
@@ -28,7 +28,7 @@ export const arabicDays = {
   Wednesday: 'الأربعاء',
   Thursday: 'الخميس',
   Friday: 'الجمعة',
-  Saturday: 'السبت'
+  Saturday: 'السبت',
 };
 
 /**
@@ -41,7 +41,7 @@ export const persianDays = {
   Wednesday: 'چهارشنبه',
   Thursday: 'پنج‌شنبه',
   Friday: 'جمعه',
-  Saturday: 'شنبه'
+  Saturday: 'شنبه',
 };
 
 /**
@@ -59,7 +59,7 @@ export const kurdishMonths = {
   September: 'ئەیلوول',
   October: 'تشرینی یەکەم',
   November: 'تشرینی دووەم',
-  December: 'کانوونی یەکەم'
+  December: 'کانوونی یەکەم',
 };
 
 /**
@@ -77,7 +77,7 @@ export const arabicMonths = {
   September: 'سبتمبر',
   October: 'أكتوبر',
   November: 'نوفمبر',
-  December: 'ديسمبر'
+  December: 'ديسمبر',
 };
 
 /**
@@ -95,7 +95,7 @@ export const persianMonths = {
   September: 'سپتامبر',
   October: 'اکتبر',
   November: 'نوامبر',
-  December: 'دسامبر'
+  December: 'دسامبر',
 };
 
 /**
@@ -113,17 +113,20 @@ export const englishMonths = [
   'September',
   'October',
   'November',
-  'December'
+  'December',
 ];
 
 /**
  * Gets the localized day name based on the English day name and locale
- * 
+ *
  * @param englishDay - English day name (e.g., "Sunday")
  * @param locale - Locale code ('en', 'ku', 'ar', or 'fa')
  * @returns Localized day name
  */
-export const getLocalizedDayName = (englishDay: string, locale: string): string => {
+export const getLocalizedDayName = (
+  englishDay: string,
+  locale: string,
+): string => {
   switch (locale) {
   case 'ku':
     return kurdishDays[englishDay as keyof typeof kurdishDays] || englishDay;
@@ -138,86 +141,99 @@ export const getLocalizedDayName = (englishDay: string, locale: string): string 
 
 /**
  * Gets the localized month name based on month number and locale
- * 
+ *
  * @param month - Month number (1-12)
  * @param locale - Locale code ('en', 'ku', 'ar', or 'fa')
  * @param prefix - Optional prefix to add before the month name
  * @returns Localized month name
  */
-export function getLocalizedMonthName(month: number, locale: string, prefix?: string): string {
+export function getLocalizedMonthName(
+  month: number,
+  locale: string,
+  prefix?: string,
+): string {
   // Convert 0-based index to 1-based for human-readable month
   // const adjustedMonth = month + 1;
-  
+
   // Get English month name first
   const englishMonth = englishMonths[month];
-  
+
   if (!englishMonth) {
     return '';
   }
-  
+
   let localizedMonth = englishMonth;
-  
+
   switch (locale) {
   case 'ku':
-    localizedMonth = kurdishMonths[englishMonth as keyof typeof kurdishMonths] || englishMonth;
+    localizedMonth =
+        kurdishMonths[englishMonth as keyof typeof kurdishMonths] ||
+        englishMonth;
     break;
   case 'ar':
-    localizedMonth = arabicMonths[englishMonth as keyof typeof arabicMonths] || englishMonth;
+    localizedMonth =
+        arabicMonths[englishMonth as keyof typeof arabicMonths] || englishMonth;
     break;
   case 'fa':
-    localizedMonth = persianMonths[englishMonth as keyof typeof persianMonths] || englishMonth;
+    localizedMonth =
+        persianMonths[englishMonth as keyof typeof persianMonths] ||
+        englishMonth;
     break;
   }
-  
+
   return prefix ? `${prefix} ${localizedMonth}` : localizedMonth;
 }
 
 /**
  * Gets the Kurdish country name based on English country name
- * 
+ *
  * @param englishCountry - English country name
  * @returns Kurdish country name
  */
 export const getKurdishCountryName = (englishCountry: string): string => {
   const countryMap: Record<string, string> = {
-    'Kurdistan': 'کوردستان',
-    'Iraq': 'عێراق',
-    'Iran': 'ئێران',
-    'Turkey': 'تورکیا',
-    'Syria': 'سووریا'
+    Kurdistan: 'کوردستان',
+    Iraq: 'عێراق',
+    Iran: 'ئێران',
+    Turkey: 'تورکیا',
+    Syria: 'سووریا',
   };
-  
+
   return countryMap[englishCountry] || englishCountry;
 };
 
 /**
  * Formats a date according to the specified locale and options
- * 
+ *
  * @param date - JavaScript Date object
  * @param locale - Locale code ('en', 'ku', 'ar', or 'fa')
  * @param options - Intl.DateTimeFormatOptions
  * @returns Formatted date string
  */
-export function formatDate(date: Date, locale: string, options?: Intl.DateTimeFormatOptions): string {
+export function formatDate(
+  date: Date,
+  locale: string,
+  options?: Intl.DateTimeFormatOptions,
+): string {
   // Set default options if not provided
   const defaultOptions: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   };
-  
+
   const mergedOptions = options || defaultOptions;
-  
+
   // Map locale codes to Intl locale formats
   const localeMap: Record<string, string> = {
-    'en': 'en-US',
-    'ku': 'ckb-IR', // Central Kurdish (Sorani)
-    'ar': 'ar-IQ',
-    'fa': 'fa-IR'
+    en: 'en-US',
+    ku: 'ckb-IR', // Central Kurdish (Sorani)
+    ar: 'ar-IQ',
+    fa: 'fa-IR',
   };
-  
+
   const intlLocale = localeMap[locale] || 'en-US';
-  
+
   try {
     return new Intl.DateTimeFormat(intlLocale, mergedOptions).format(date);
   } catch (error) {
@@ -228,7 +244,7 @@ export function formatDate(date: Date, locale: string, options?: Intl.DateTimeFo
 
 /**
  * Adds a specified number of days to a date
- * 
+ *
  * @param date - JavaScript Date object
  * @param days - Number of days to add (can be negative)
  * @returns New Date object with days added
@@ -241,7 +257,7 @@ export function addDays(date: Date, days: number): Date {
 
 /**
  * Checks if two dates are the same day
- * 
+ *
  * @param date1 - First date
  * @param date2 - Second date
  * @returns True if the dates are the same day
@@ -256,7 +272,7 @@ export function isSameDay(date1: Date, date2: Date): boolean {
 
 /**
  * Checks if a date is today
- * 
+ *
  * @param date - Date to check
  * @returns True if the date is today
  */
@@ -266,17 +282,17 @@ export function isToday(date: Date): boolean {
 
 /**
  * Checks if a year is a leap year in the Gregorian calendar
- * 
+ *
  * @param year - Year to check
  * @returns True if the year is a leap year
  */
 export function isLeapYear(year: number): boolean {
-  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 
 /**
  * Gets the number of days in a month
- * 
+ *
  * @param year - Year
  * @param month - Month (0-11)
  * @returns Number of days in the month
@@ -284,18 +300,18 @@ export function isLeapYear(year: number): boolean {
 export function getDaysInMonth(year: number, month: number): number {
   // Month is 0-based in JavaScript Date
   const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  
+
   // Check for February in a leap year
   if (month === 1 && isLeapYear(year)) {
     return 29;
   }
-  
+
   return daysInMonth[month];
 }
 
 /**
  * Gets the first day of a month
- * 
+ *
  * @param year - Year
  * @param month - Month (0-11)
  * @returns Date object for the first day of the month
@@ -306,7 +322,7 @@ export function getFirstDayOfMonth(year: number, month: number): Date {
 
 /**
  * Gets the day of the week for the first day of a month
- * 
+ *
  * @param year - Year
  * @param month - Month (0-11)
  * @returns Day of week (0-6, where 0 is Sunday)
@@ -317,7 +333,7 @@ export function getFirstDayOfWeek(year: number, month: number): number {
 
 /**
  * Gets an array of dates for all days in a month
- * 
+ *
  * @param year - Year
  * @param month - Month (0-11)
  * @returns Array of Date objects for each day in the month
@@ -325,10 +341,10 @@ export function getFirstDayOfWeek(year: number, month: number): number {
 export function getDatesForMonth(year: number, month: number): Date[] {
   const result: Date[] = [];
   const daysInMonth = getDaysInMonth(year, month);
-  
+
   for (let day = 1; day <= daysInMonth; day++) {
     result.push(new Date(year, month, day));
   }
-  
+
   return result;
-} 
+}
